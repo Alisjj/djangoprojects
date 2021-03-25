@@ -1,0 +1,30 @@
+{% extends "base_bootstrap.html" %}
+
+{% block content %}
+<div class="container">
+
+<h1>DJ4E Sample Implementations</h1>
+<p>This is coming from a file in home/templates/main.html</p>
+
+<p>
+<ul>
+    <li>Try <a href="{% url 'autos:autos_list'  %}">Autos Crud</a></li>
+    <li>Try <a href="{% url 'autos:cat_list'  %}">Cats Crud</a></li>
+</ul>
+</p>
+{% if user.is_authenticated %}
+<p><a href="{% url 'logout' %}?next={% url 'autos:all' %}">logout</a></p>
+{% else %}
+<p><a href="{% url 'login' %}?next={{ request.path }}">login</a></p>
+{% endif %}
+<p>
+
+<h2>Hello World</h2>
+<p>A random cat picture (of course).</p>
+<p>
+<img src="https://loremflickr.com/160/120/cat"
+    alt="A random picture of a cat">
+</p>
+
+</div>
+{% endblock %}
